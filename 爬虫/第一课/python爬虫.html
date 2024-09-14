@@ -1,0 +1,332 @@
+<!DOCTYPE html><html><head>
+      <title>python爬虫</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\RBES\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="python爬虫">Python爬虫 </h1>
+<hr>
+
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#python爬虫" class="md-toc-link"><p>Python爬虫</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#什么是爬虫" class="md-toc-link">
+            <p>什么是爬虫</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#使用爬虫可以做什么" class="md-toc-link">
+            <p>使用爬虫可以做什么？</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#前置知识" class="md-toc-link"><p>前置知识</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#基本网络知识" class="md-toc-link">
+            <p>基本网络知识</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#api接口" class="md-toc-link">
+            <p>API接口</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#环境安装" class="md-toc-link">
+            <p>环境安装</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#requests库" class="md-toc-link"><p>Requests库</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#发送get请求" class="md-toc-link">
+            <p>发送GET请求</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#发送post请求" class="md-toc-link">
+            <p>发送POST请求</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#添加请求头" class="md-toc-link"><p>添加请求头</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#拓展内容" class="md-toc-link">
+            <p>拓展内容</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#常用属性" class="md-toc-link">
+            <p>常用属性</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#单图下载器案例" class="md-toc-link">
+            <p>单图下载器案例</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+<hr>
+<h2 id="什么是爬虫">什么是爬虫 </h2>
+<p><font color="red">使用编程方式自动化采集数据的过程称为爬虫</font></p>
+<p>爬虫是使用程序自动化发送请求、获取响应的程序，<br>
+主要用来批量抓取（采集）文件或数据</p>
+<h2 id="使用爬虫可以做什么">使用爬虫可以做什么？ </h2>
+<ul>
+<li>
+<p>数据采集：爬虫可以用来采集网站的各种信息，比如新闻文章、图片资料、产品价格、用户评论等。这种数据经常用于商业分析或学术研究。</p>
+</li>
+<li>
+<p>网页数据提取：Python 爬虫可以从复杂的网页源码中提取所需的数据，例如可从电子商务网站抓取产品信息，从社交网络网站抓取用户行为。</p>
+</li>
+<li>
+<p>竞品分析：通过自动化的方式抓取竞争对手的信息，如价格、优惠策略、产品变动等，可以进行实时的竞品分析和调整自己的商业策略。</p>
+</li>
+<li>
+<p>自动登录和操作：Python 爬虫也可以实现自动登录网站，进行一些自动化操作，如自动发帖、自动评论、自动点赞、自动抢等。</p>
+</li>
+<li>
+<p>搜索引擎爬取：搜索引擎（如 Google、百度）的工作原理也是基于爬虫的，爬过互联网并将网页信息存储到索引数据库中。</p>
+</li>
+<li>
+<p>数据清洗：爬虫获取的数据通常需要清洗和处理才能用于分析。Python 有很多数据清洗的库可以将爬取的原始数据转化为易于处理的格式。</p>
+</li>
+<li>
+<p>机器学习和数据挖掘：爬虫获取的数据经常用作机器学习算法的训练集或用于数据挖掘，以发现数据中隐藏的模式。</p>
+</li>
+</ul>
+<hr>
+<h2 id="前置知识">前置知识 </h2>
+<h3 id="基本网络知识">基本网络知识 </h3>
+<p>简单流程：打开浏览器-输入网址-看到网页</p>
+<p>详细流程：打开浏览器-输入网址并确认-到达服务器-服务器返回源代码-浏览器显示</p>
+<h3 id="api接口">API接口 </h3>
+<p>应用程序编程接口（英语：Application Programming Interface，简称：API），是一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，或理解内部工作机制的细节。</p>
+<h3 id="环境安装">环境安装 </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>pip install requests
+</code></pre><h2 id="requests库">Requests库 </h2>
+<p>如果你已经安装了requests库，那么你可以直接用Python导入它：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> requests
+</code></pre><h3 id="发送get请求">发送GET请求 </h3>
+<p>GET请求通常用于获取服务器的资源。你可以通过requests.get(url)函数发送GET请求。例如：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://httpbin.org/get'</span><span class="token punctuation">)</span>  <span class="token comment"># 此处URL需替换为实际可用的URL</span>
+</code></pre><p>通过response对象，我们可以获取很多信息，如状态码、响应头、响应的html文本等。</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>  <span class="token comment"># 输出状态码</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>  <span class="token comment"># 输出响应头</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>text<span class="token punctuation">)</span>  <span class="token comment"># 输出html文本</span>
+</code></pre><h3 id="发送post请求">发送POST请求 </h3>
+<p>POST请求通常用于向服务器提交数据。你可以通过requests.post(url, data)函数发送POST请求。</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'key1'</span><span class="token punctuation">:</span> <span class="token string">'value1'</span><span class="token punctuation">,</span> <span class="token string">'key2'</span><span class="token punctuation">:</span> <span class="token string">'value2'</span><span class="token punctuation">}</span>
+response <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">'http://httpbin.org/post'</span><span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>  <span class="token comment"># 此处URL需替换为实际可用的URL</span>
+</code></pre><p>同样，你可以通过response对象获取响应信息。</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>  <span class="token comment"># 输出状态码</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>text<span class="token punctuation">)</span>  <span class="token comment"># 输出返回的信息</span>
+</code></pre><h3 id="添加请求头">添加请求头 </h3>
+<p>有些网站会检查请求的Headers，因此我们需要通过requests.get(url, headers=headers)或requests.post(url, data, headers=headers)函数发送带请求头的请求。</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0'</span><span class="token punctuation">}</span>
+response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://httpbin.org/get'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>  <span class="token comment"># 此处URL需替换为实际可用的URL</span>
+</code></pre><hr>
+<h4 id="拓展内容">拓展内容 </h4>
+<p>HTTP 状态码由三位数和一个原因短语组成，如果收到的响应中没有包含预期的内容，这些状态码可以帮助确定出现问题的原因和位置。下面是一些最常见的HTTP状态码：</p>
+<ul>
+<li>
+<p>1xx（信息响应）：这类状态码代表请求已被接受，需要进一步处理。这类响应是临时响应，只包含状态行和某些可选的响应头信息，并以空行结束。</p>
+<ul>
+<li>100 Continue：服务器已收到请求的一部分，客户端应该继续发送其余的请求。</li>
+</ul>
+</li>
+<li>
+<p>2xx （成功） ：这类状态码表明服务器成功地接受了由客户端发出的请求</p>
+<ul>
+<li>200 OK： 请求成功。请求所希望的回应头或数据体将随此响应返回。</li>
+<li>201 Created： 请求已被实现，并且有一个新的资源已经依据请求的需要而创建。</li>
+</ul>
+</li>
+<li>
+<p>3xx （重定向）：完成请求所需额外的步骤。</p>
+<ul>
+<li>302 Found：请求的资源现在临时从不同的URI响应请求。</li>
+<li>304 Not Modified：资源未改变，直接使用浏览器缓存即可。</li>
+</ul>
+</li>
+<li>
+<p>4xx（请求错误）：这类的状态码代表了客户端看起来可能发生了错误，妨碍了服务器的处理。</p>
+<ul>
+<li>400 Bad Request：请求无法被服务器理解。</li>
+<li>401 Unauthorized：当前请求需要用户验证。</li>
+<li>403 Forbidden：服务器了解客户端的请求，但是拒绝执行它。</li>
+<li>404 Not Found：请求失败，请求所希望得到的资源未被在服务器上发现。</li>
+</ul>
+</li>
+<li>
+<p>5xx（服务器错误）：这类状态码代表服务器在处理请求的过程中发生了错误。</p>
+<ul>
+<li>500 Internal Server Error：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。</li>
+<li>502 Bad Gateway：服务器是一个网关或者代理服务器，它收到了来自上游服务器的无效响应。</li>
+<li>503 Service Unavailable：由于临时的服务器维护或者过载，服务器当前无法处理请求。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>首先我们发送一个GET请求：</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> requests
+
+response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://httpbin.org/get'</span><span class="token punctuation">)</span>  <span class="token comment"># 此处URL需替换为实际可用的URL</span>
+</code></pre><h3 id="常用属性">常用属性 </h3>
+<ul>
+<li><strong>status_code</strong>：获取HTTP响应的状态码</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>headers</strong>：HTTP响应的头信息，返回的是一个字典</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>text</strong>：HTTP响应的主体内容，此属性会自动对结果进行解码</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>content</strong>：HTTP响应的二进制内容</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>json()</strong>：如果HTTP响应的内容是json，我们可以使用此方法解析json，返回一个字典。</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>cookies</strong>：一个CookieJar对象，包含服务器设置的所有cookies</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>cookies<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>url</strong>：URL of the response</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
+</code></pre><ul>
+<li><strong>encoding</strong>：获取响应的编码方式</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>encoding<span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>pip <span class="token function">install</span> requests
+</code></pre><h2 id="单图下载器案例">单图下载器案例 </h2>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> requests
+
+<span class="token comment"># 图片的URL</span>
+url <span class="token operator">=</span> <span class="token string">'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png'</span>  <span class="token comment"># 爬取百度图片</span>
+
+<span class="token comment"># 发起GET请求</span>
+response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>stream<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 保存图片到当前目录的“image.jpg”文件中</span>
+<span class="token keyword keyword-with">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'image.jpg'</span><span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword keyword-as">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-for">for</span> chunk <span class="token keyword keyword-in">in</span> response<span class="token punctuation">.</span>iter_content<span class="token punctuation">(</span>chunk_size<span class="token operator">=</span><span class="token number">8192</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+        <span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>chunk<span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> requests  <span class="token comment">#访问网络的库</span>
+
+<span class="token comment">#发送Get请求</span>
+res<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://httpbin.org/get"</span><span class="token punctuation">)</span>
+
+<span class="token comment">#获取状态码</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+<span class="token comment">#获取响应头</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
+
+<span class="token comment">#获取文本</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+
+<span class="token comment">#获取图片视频音乐文件等</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
+
+<span class="token keyword keyword-import">import</span> requests
+url<span class="token operator">=</span><span class="token string">"https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"</span>
+
+response<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+
+f<span class="token operator">=</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"image.jpg"</span><span class="token punctuation">,</span><span class="token string">"wb"</span><span class="token punctuation">)</span>
+f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
+
+<span class="token keyword keyword-import">import</span> requests <span class="token comment">#导入请求网络请求库</span>
+<span class="token comment"># 天气预报网址是：http://tianqiapi.com/</span>
+api<span class="token operator">=</span><span class="token string">"http://v1.yiketianqi.com/api?appid=账号&amp;appsecret=密码&amp;city="</span>
+
+<span class="token keyword keyword-while">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"欢迎使用简陋的天气预报系统！"</span><span class="token punctuation">)</span>
+    x<span class="token operator">=</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入你要查询的城市:"</span><span class="token punctuation">)</span>
+    url<span class="token operator">=</span>api<span class="token operator">+</span>x
+    res<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+    res2<span class="token operator">=</span>res<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    city<span class="token operator">=</span>res2<span class="token punctuation">[</span><span class="token string">"city"</span><span class="token punctuation">]</span>
+    temp1<span class="token operator">=</span>res2<span class="token punctuation">[</span><span class="token string">"data"</span><span class="token punctuation">]</span>
+    temp2<span class="token operator">=</span>temp1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    humidity<span class="token operator">=</span>temp2<span class="token punctuation">[</span><span class="token string">"humidity"</span><span class="token punctuation">]</span>
+    week<span class="token operator">=</span>temp2<span class="token punctuation">[</span><span class="token string">"week"</span><span class="token punctuation">]</span>
+    wea<span class="token operator">=</span>temp2<span class="token punctuation">[</span><span class="token string">"wea"</span><span class="token punctuation">]</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"您的城市："</span><span class="token operator">+</span>city<span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>week<span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"天气是"</span><span class="token operator">+</span>wea<span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"湿度"</span><span class="token punctuation">,</span>humidity<span class="token punctuation">)</span>
+    <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token comment">#有反爬措施</span>
+<span class="token keyword keyword-import">import</span> requests
+url<span class="token operator">=</span><span class="token string">"http://www.baidu.com"</span>
+h <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0'</span><span class="token punctuation">}</span>
+res<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>headers<span class="token operator">=</span>h<span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+</code></pre><hr>
+<p>第一课结束</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
